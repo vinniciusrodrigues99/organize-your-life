@@ -30,6 +30,18 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Home",
+          headerTitleStyle: {
+            fontSize: 20,
+            fontFamily: "roboto-bold",
+            fontFeatureSettings: "'ss01' on, 'ss02' on",
+            fontVariant: ["small-caps"],
+            fontWeight: "700",
+            letterSpacing: 1.0,
+            textShadowColor: "#ffffffff",
+            textShadowOffset: { width: 1, height: 1 },
+            textShadowRadius: 2,
+          },
+          headerShown: true,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "home-sharp" : "home-outline"}
@@ -42,7 +54,20 @@ export default function TabLayout() {
       <Tabs.Screen
         name="financas"
         options={{
-          title: "Finanças",
+          title: "Controle",
+          headerTitle: "Controle Financeiro",
+          headerTitleStyle: {
+            fontSize: 20,
+            fontFamily: "roboto-bold",
+            fontFeatureSettings: "'ss01' on, 'ss02' on",
+            fontVariant: ["small-caps"],
+            fontWeight: "700",
+            letterSpacing: 1.0,
+            textShadowColor: "#000000ff",
+            textShadowOffset: { width: 1, height: 1 },
+            textShadowRadius: 2,
+          },
+          headerShown: true,
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={
