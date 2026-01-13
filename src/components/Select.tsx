@@ -1,4 +1,4 @@
-import { SelectOption, SelectProps } from "@/types";
+import { SelectOption, SelectProps } from "@/src/types";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {

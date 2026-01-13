@@ -1,7 +1,7 @@
+import Button from "@/src/components/Button";
 import { StyleSheet, Text, View } from "react-native";
 import placeHolderImage from "../../assets/images/background-image.png";
-import Button from "../components/Button";
-import ImageViewer from "../components/ImageViewer";
+import ImageViewer from "../../src/components/ImageViewer";
 
 export default function Index() {
   return (
