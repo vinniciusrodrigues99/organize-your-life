@@ -1,2 +1,3 @@
-export * from "./Despesa";
 export * from "./Select";
+export * from "./Transacao";
+

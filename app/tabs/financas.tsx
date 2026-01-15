@@ -1,15 +1,41 @@
 import Button from "@/src/components/Button";
 import { Select } from "@/src/components/Select";
-import { TipoCategoria } from "@/src/types";
+import { useAppDispatch, useAppSelector } from "@/src/store/hooks";
+import { adicionarTransacao } from "@/src/store/slices/transacoesSlice";
+import { TipoCategoria, Transacao } from "@/src/types";
 import { formatCurrency } from "@/src/utils/currency";
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, TextInput, View } from "react-native";
 import { styles } from "../../src/theme/global";
+// Talvez adicionar o react hook form para facilitar o gerenciamento do form
 
 export default function Financas() {
   const [valor, setValor] = React.useState("");
   const [descricao, setDescricao] = React.useState<string>("");
   const [categoria, setCategoria] = React.useState<TipoCategoria>();
+
+  const transacoes = useAppSelector((state) => state.transacoes).lista;
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = () => {
+     const novaTransacao: Transacao = {
+      tipo: { name: categoria! },
+      valor: Number(valor.replace(/\D/g, "")) / 100, 
+      data: new Date().toISOString(),
+      descricao: descricao,
+    };
+
+    dispatch(adicionarTransacao(novaTransacao));
+    console.log("Transação adicionada:", transacoes);
+
+    setDescricao("");
+    setValor("");
+    setCategoria(undefined);
+  }
+
+  useEffect(() => {
+    console.log("Transações atualizadas:", transacoes);
+  }, [transacoes]);
 
   return (
     <View style={styles.container}>
@@ -45,7 +71,7 @@ export default function Financas() {
           label="Selecione a categoria"
           placeholder="Aluguel"
         />
-        <Button label="Adicionar"></Button>
+        <Button label="Adicionar" onClick={handleSubmit}></Button>
       </View>
     </View>
   );
