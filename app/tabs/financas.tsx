@@ -7,7 +7,6 @@ import { formatCurrency } from "@/src/utils/currency";
 import React, { useEffect } from "react";
 import { Text, TextInput, View } from "react-native";
 import { styles } from "../../src/theme/global";
-// Talvez adicionar o react hook form para facilitar o gerenciamento do form
 
 export default function Financas() {
   const [valor, setValor] = React.useState("");
@@ -16,6 +15,10 @@ export default function Financas() {
 
   const transacoes = useAppSelector((state) => state.transacoes).lista;
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    console.log("Transações atualizadas:", transacoes);
+  }, [transacoes]);
 
   const handleSubmit = () => {
      const novaTransacao: Transacao = {
@@ -27,15 +30,10 @@ export default function Financas() {
 
     dispatch(adicionarTransacao(novaTransacao));
     console.log("Transação adicionada:", transacoes);
-
     setDescricao("");
     setValor("");
     setCategoria(undefined);
   }
-
-  useEffect(() => {
-    console.log("Transações atualizadas:", transacoes);
-  }, [transacoes]);
 
   return (
     <View style={styles.container}>
