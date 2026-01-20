@@ -13,31 +13,44 @@ export default function ResumoFinanceiro() {
   const [investimentos, setInvestimentos] = React.useState<string>("");
 
   const transacoes = useAppSelector((state) => state.transacoes).lista;
-  
+
   useEffect(() => {
     const totalSalario = transacoes
-      .filter(t => t.tipo.name == TipoCategoria.Salario)
-      .reduce((acc, curr) => acc + curr.valor, 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      .filter((t) => t.tipo.name == TipoCategoria.Salario)
+      .reduce((acc, curr) => acc + curr.valor, 0)
+      .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
     setSaldoSalario(totalSalario);
-    
-    const totalReceitas = transacoes.filter(t => t.tipo.name == TipoCategoria.FreeLancer).reduce((acc, current) => acc + current.valor, 0).toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
+
+    const totalReceitas = transacoes
+      .filter((t) => t.tipo.name == TipoCategoria.FreeLancer)
+      .reduce((acc, current) => acc + current.valor, 0)
+      .toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
     setSaldoReceitas(totalReceitas);
-    
-    const totalDespesas = transacoes.filter(t => t.tipo.name != TipoCategoria.Salario && t.tipo.name != TipoCategoria.FreeLancer).reduce((acc, current) => acc + current.valor, 0).toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
+
+    const totalDespesas = transacoes
+      .filter(
+        (t) =>
+          t.tipo.name != TipoCategoria.Salario &&
+          t.tipo.name != TipoCategoria.FreeLancer,
+      )
+      .reduce((acc, current) => acc + current.valor, 0)
+      .toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
     setSaldoDespesas(totalDespesas);
 
-    const totalInvestimentos = transacoes.filter(t => t.tipo.name == TipoCategoria.Investimentos).reduce((acc, current) => acc + current.valor, 0).toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
+    const totalInvestimentos = transacoes
+      .filter((t) => t.tipo.name == TipoCategoria.Investimentos)
+      .reduce((acc, current) => acc + current.valor, 0)
+      .toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
     setInvestimentos(totalInvestimentos);
-
   }, [transacoes]);
 
   return (
@@ -52,8 +65,7 @@ export default function ResumoFinanceiro() {
           keyboardType="numeric"
           editable={false}
           value={saldoSalario}
-        >
-        </TextInput>
+        ></TextInput>
 
         <Text style={styles.text}>Valor das receitas: </Text>
         <TextInput

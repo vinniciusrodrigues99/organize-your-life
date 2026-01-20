@@ -1,8 +1,8 @@
-# Welcome to your Expo app 👋
+# Organize Your Life 📱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicação mobile para organização financeira e gerenciamento de veículos, construída com [Expo](https://expo.dev) e React Native.
 
-## Get started
+## 🚀 Get started
 
 1. Install dependencies
 
@@ -15,6 +15,16 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```bash
    npx expo start
    ```
+
+3. Build para Android
+
+   ```bash
+   npm run android
+   ```
+
+## 📖 Documentação
+
+- **[Build e Configuração Android](./DOCS_BUILD_ANDROID.md)** - Guia completo para build, configuração e resolução de problemas no Android
 
 In the output, you'll find options to open the app in a
 
