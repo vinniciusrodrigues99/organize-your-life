@@ -136,6 +136,32 @@ export default function TabLayout() {
             ),
           }}
         />
+        <Tabs.Screen
+          name="scannerPlaca"
+          options={{
+            title: "Scanner P",
+            headerTitle: "Scanner de Placas",
+            headerTitleStyle: {
+              fontSize: 20,
+              fontFamily: "arial",
+              fontFeatureSettings: "'ss01' on, 'ss02' on",
+              fontVariant: ["small-caps"],
+              fontWeight: "700",
+              letterSpacing: 1.0,
+              textShadowColor: "#000000ff",
+              textShadowOffset: { width: 1, height: 1 },
+              textShadowRadius: 2,
+            },
+            headerShown: true,
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons
+                name={focused ? "camera" : "camera-outline"}
+                color={color}
+                size={24}
+              />
+            ),
+          }}
+        />
       </Tabs>
     </Provider>
   );
